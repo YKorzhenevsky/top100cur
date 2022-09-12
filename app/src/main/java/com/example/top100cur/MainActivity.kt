@@ -6,11 +6,20 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import com.example.top100cur.activities.AboutActivity
+import com.example.top100cur.fragments.CurrenciesListFragment
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        if (savedInstanceState == null) {
+            supportFragmentManager
+                .beginTransaction()
+                .add(R.id.container, CurrenciesListFragment(), null)
+                .commit()
+        }
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
